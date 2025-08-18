@@ -28,7 +28,7 @@ def show_pg(pg_id):
 
   
 @app.route("/pgn/<id>")
-def show_a_pgn(id):
+def show_pgn(id):
     pgn = load_pgn_from_db(id)
     return jsonify(pgn)
 

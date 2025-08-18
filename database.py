@@ -35,5 +35,5 @@ def load_pgn_from_db(id):
     if len(rows) == 0:
       return None
     else:
-      result = result.mappings().all()
-      return result[0]
+      return result.mappings().all()
+      
