@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, jsonify, send_from_directory, current_app
 from gevent import monkey; monkey.patch_all()
 from gevent.pywsgi import WSGIServer
-from database import load_pg_from_db
+from database import load_pg_from_db, load_pgn_from_db
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -27,9 +27,9 @@ def show_pgn(pgn_id):
     return render_template('classpage.html', i=item)
 
   
-@app.route("/api/pgn")
-def list_pgn():
-    pgn = load_pg_from_db()
+@app.route("/pgn/<id>")
+def show_a_pgn(id):
+    pgn = load_pgn_from_db(id)
     return jsonify(pgn)
 
 

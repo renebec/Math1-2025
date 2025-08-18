@@ -17,8 +17,6 @@ def load_pg_from_db():
     pgn = result.mappings().all()
     return pgn
 
-
-      
       #result_all = result.all()
       #tipo = type(result_all)
       #tipo_2 = type(result_all[0])
@@ -26,3 +24,15 @@ def load_pg_from_db():
       #print(tipo_2)
       #print(result_all)
     #otro comentario
+
+def load_pgn_from_db(id):
+  with engine.connect() as conn:
+    result = conn.execute(
+      text("SELECT * FROM pgn WHERE id = :val")
+    )
+    rows = result.all()
+    if len(rows) == 0:
+      return None
+    else:
+      pgn = result.mappings().all()
+      return pgn[0]
