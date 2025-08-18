@@ -28,11 +28,12 @@ def load_pg_from_db():
 def load_pgn_from_db(id):
   with engine.connect() as conn:
     result = conn.execute(
-      text("SELECT * FROM pgn WHERE id = :val")
+      text("SELECT * FROM math1_2025 WHERE id = :val"),
+      {"val":id}
     )
     rows = result.all()
     if len(rows) == 0:
       return None
     else:
-      pgn = result.mappings().all()
-      return pgn[0]
+      result = result.mappings().all()
+      return result[0]
