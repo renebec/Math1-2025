@@ -27,10 +27,13 @@ def show_pg(pg_id):
     return render_template('classpage.html', i=item)
 
   
-@app.route("/pgn/<id>")
+@app.route("/pgn/<int:id>")
 def show_pgn(id):
     pgn = load_pgn_from_db(id)
-    return jsonify(pgn)
+    if pgn:
+        return jsonify(pgn)
+    else:
+        return jsonify({'error': 'Not found'}), 404
 
 
 

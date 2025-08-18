@@ -31,9 +31,6 @@ def load_pgn_from_db(id):
       text("SELECT * FROM math1_2025 WHERE id = :val"),
       {"val":id}
     )
-    rows = result.all()
-    if len(rows) == 0:
-      return None
-    else:
-      return result.mappings().all()
+    row = result.mappings().first()  # <- dict, no tupla
+    return dict(row) if row else None
       
