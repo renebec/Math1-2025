@@ -28,7 +28,7 @@ def show_pgn(pgn_id):
 
   
 @app.route("/api/pgn")
-def list_temas():
+def list_pgn():
     pgn = load_pg_from_db()
     return jsonify(pgn)
 
