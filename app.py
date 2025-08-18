@@ -2,8 +2,8 @@ import os
 from flask import Flask, render_template, jsonify, send_from_directory, current_app
 from gevent import monkey; monkey.patch_all()
 from gevent.pywsgi import WSGIServer
-
 from database import load_pg_from_db
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
@@ -17,16 +17,20 @@ def hello_pm1():
 
 
 
-@app.route('/tema/<int:tema_id>')
-def show_tema(tema_id):
+@app.route('/pgn/<int:pgn_id>') 
+def show_pgn(pgn_id):
     # Supongamos que TEMAS es tu estructura de datos (lista o dict)
-    tema = pgn[tema_id]
-    return render_template('classpage.html', i=tema)
-  
+    pgn = load_pg_from_db()
+    item = next((item for item in pgn if item['id'] == pgn_id), None)
+    if item is None:
+        return "Not Found", 404
+    return render_template('classpage.html', i=item)
 
-@app.route("/api/temas")
+  
+@app.route("/api/pgn")
 def list_temas():
-  return jsonify(pgn)
+    pgn = load_pg_from_db()
+    return jsonify(pgn)
 
 
 
