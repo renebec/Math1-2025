@@ -4,4 +4,3 @@ gevent
 sqlalchemy
 werkzeug
 pymysql
-os
