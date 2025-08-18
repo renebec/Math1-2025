@@ -17,7 +17,7 @@ def hello_pm1():
 
 
 
-@app.route('/pgn/<int:pgn_id>') 
+@app.route('/pg/<int:pgn_id>') 
 def show_pgn(pgn_id):
     # Supongamos que TEMAS es tu estructura de datos (lista o dict)
     pgn = load_pg_from_db()
