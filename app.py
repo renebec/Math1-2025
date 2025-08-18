@@ -11,17 +11,17 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 @app.route("/")
 def hello_pm1():
-  pgn = load_pg_from_db()
+  pg = load_pg_from_db()
   return render_template('home.html',
-                        pgn=pgn)
+                        pg=pg)
 
 
 
-@app.route('/pg/<int:pgn_id>') 
-def show_pgn(pgn_id):
+@app.route('/pg/<int:pg_id>') 
+def show_pg(pg_id):
     # Supongamos que TEMAS es tu estructura de datos (lista o dict)
-    pgn = load_pg_from_db()
-    item = next((item for item in pgn if item['id'] == pgn_id), None)
+    pg = load_pg_from_db()
+    item = next((item for item in pg if item['id'] == pg_id), None)
     if item is None:
         return "Not Found", 404
     return render_template('classpage.html', i=item)

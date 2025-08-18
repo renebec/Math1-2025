@@ -99,7 +99,7 @@
             En el programa de Pensamiento Matemático I se abordan 15 progresiones de               aprendizaje que tienen impacto en el logro de las metas de aprendizaje                 clasificadas utilizando las cuatro categorías y empleando algunas de sus               subcategorías. Las metas de aprendizaje de Pensamiento Matemático refieren             a lo que se espera que el estudiantado aprenda durante la trayectoria de               esta Unidad de Aprendizaje Curricular .</p>
 
         <div>            
-            {% set item = (pgn | selectattr('parcial', 'equalto', 'Parcial 1') |                 first) %}
+            {% set item = (pg | selectattr('parcial', 'equalto', 'Parcial 1') |                 first) %}
             {% if item %}
                 <h2 class="text-center mt-4 mb-2" style="padding-                                           bottom:16px;color:rgb(100,100,100);">
                     {{item['parcial']}}
@@ -108,7 +108,7 @@
         </div>
         
         <div>
-            {% for i in pgn %}
+            {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 1' %}
                     {% include 'temasitem.html' %}
                 {% endif %}
@@ -117,7 +117,7 @@
 
             {% set ns = namespace(total=0) %}
 
-            {% for i in pgn %}
+            {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 1' %}
                     {% set apertura = i['aperturaEvaPond'] | int %}
                     {% set desarrollo = i['desarrolloEvaPond'] | int %}
@@ -145,7 +145,7 @@
         </div>
 
         <div>                     
-                {% set item = (pgn | selectattr('parcial', 'equalto', 'Parcial 2') |                 first) %}
+                {% set item = (pg | selectattr('parcial', 'equalto', 'Parcial 2') |                 first) %}
                 {% if item %}
                 <h2 class="text-center mt-4 mb-2" style="padding-                                       bottom:16px;color:rgb(100,100,100);">
                     {{item['parcial']}}
@@ -154,7 +154,7 @@
         </div>
         
         <div>
-            {% for i in pgn %}
+            {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 2' %}
                     {% include 'temasitem.html' %}
                 {% endif %}
@@ -162,7 +162,7 @@
 
             {% set ns = namespace(total=0) %}
 
-            {% for i in pgn %}
+            {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 2' %}
                     {% set apertura = i['aperturaEvaPond'] | int %}
                     {% set desarrollo = i['desarrolloEvaPond'] | int %}
@@ -177,7 +177,7 @@
 
             {% set ns = namespace(total=0) %}
 
-            {% for i in pgn %}
+            {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 2' %}
                     {% set tapertura = i['aperturaTiempoTotal'] | int %}
                     {% set tdesarrollo = i['desarrolloTiempoTotal'] | int %}
@@ -192,7 +192,7 @@
 
 
         <div>                     
-        {% set item = (pgn | selectattr('parcial', 'equalto', 'Parcial 3') | first)          %}
+        {% set item = (pg | selectattr('parcial', 'equalto', 'Parcial 3') | first)          %}
                 {% if item %}
                 <h2 class="text-center mt-4 mb-2" style="padding-                                       bottom:16px;color:rgb(100,100,100);">
                     {{item['parcial']}}
@@ -201,7 +201,7 @@
         </div>
 
         <div>
-            {% for i in pgn %}
+            {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 3' %}
                     {% include 'temasitem.html' %}
                 {% endif %}
@@ -223,7 +223,7 @@
 
             {% set ns = namespace(total=0) %}
 
-            {% for i in pgn %}
+            {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 3' %}
                     {% set tapertura = i['aperturaTiempoTotal'] | int %}
                     {% set tdesarrollo = i['desarrolloTiempoTotal'] | int %}

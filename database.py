@@ -14,8 +14,8 @@ engine = create_engine(db_connection_string,
 def load_pg_from_db():
   with engine.connect() as conn:
     result = conn.execute(text("SELECT * FROM math1_2025"))
-    pgn = result.mappings().all()
-    return pgn
+    pg = result.mappings().all()
+    return pg
 
       #result_all = result.all()
       #tipo = type(result_all)
