@@ -106,7 +106,6 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
             </h2>
             {% endif %}
         </div>
-        
         <div>
             {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 1' %}
@@ -114,6 +113,10 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                 {% endif %}
             
             {% endfor %}
+        </div>
+        <br>
+        <text class= 'partial-footer-total'>Parcial 1</text>
+        <div>
 
             {% set ns = namespace(total=0) %}
 
@@ -128,7 +131,8 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                 {% endif %}
             {% endfor %}
 
-            <text class='partial-footer-total'>Total Ponderado: {{ ns.total }}%<text>              <br>
+            <text class='partial-footer-total'>Total Ponderado: {{ ns.total }}% </text>              
+                <br>
 
             {% set ts = namespace(total=0) %}
 
@@ -143,8 +147,8 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                 {% endif %}
             {% endfor %}
 
-            <text class='partial-footer-total'>Total tiempo: {{ ts.total }}                         minutos</text>
-        </div>
+            <text class='partial-footer-total'>Total tiempo: {{ ts.total }} minutos</text>
+        </div>   
 
         <div>                     
                 {% set item = (pg | selectattr('parcial', 'equalto', 'Parcial 2') |                 first) %}
@@ -154,6 +158,8 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                 </h2>
                 {% endif %}
         </div>
+        <br>
+            <text class= 'partial-footer-total'>Parcial 2</text>
         
         <div>
             {% for i in pg %}
@@ -203,7 +209,8 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                 </h2>
                 {% endif %}
         </div>
-
+        <br>
+            <text class= 'partial-footer-total'>Parcial 3</text>
         <div>
             {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 3' %}
