@@ -7,6 +7,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <title>{{i.tema}}</title>
 
+    <script>
+        function myFunction0() {
+          var dots0 = document.getElementById("dots0");
+          var moreText0 = document.getElementById("more0");
+          var btnText0 = document.getElementById("myBtn0");
+
+          if (dots0.style.display === "none") {
+            dots0.style.display = "inline";
+            btnText0.innerHTML = "Leer más";
+            moreText0.style.display = "none";
+          } else {
+            dots0.style.display = "none";
+            btnText0.innerHTML = "Mostrar menos";
+            moreText0.style.display = "inline";
+          }
+        }
+    </script>
+
     <style>
 
         .infografia {
