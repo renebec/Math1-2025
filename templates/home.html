@@ -106,6 +106,7 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
             </h2>
             {% endif %}
         </div>
+    
         <div>
             {% for i in pg %}
                 {% if i['parcial'] == 'Parcial 1' %}
@@ -114,7 +115,6 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
             
             {% endfor %}
         </div>
-        <br>
         <text class= 'partial-footer-total'>Parcial 1</text>
         <div>
 
@@ -131,7 +131,7 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                 {% endif %}
             {% endfor %}
 
-            <text class='partial-footer-total'>Total Ponderado: {{ ns.total }}% </text>              
+            <text class='partial-footer-total'>Total ponderado: {{ ns.total }}% </text>              
                 <br>
 
             {% set ts = namespace(total=0) %}
@@ -147,7 +147,7 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                 {% endif %}
             {% endfor %}
 
-            <text class='partial-footer-total'>Total tiempo: {{ ts.total }} minutos</text>
+            <text class='partial-footer-total'>Total tiempo: {{ ts.total/60 }} hrs</text>
         </div>   
 
         <div>                     
@@ -167,7 +167,8 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                     {% include 'temasitem.html' %}
                 {% endif %}
             {% endfor %}
-
+        </div>
+        <div>
             {% set ns = namespace(total=0) %}
 
             {% for i in pg %}
@@ -181,7 +182,7 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                 {% endif %}
             {% endfor %}
 
-            <text class= 'partial-footer-total'>Total Ponderado: {{ ns.total }}%                   </text>        
+            <text class= 'partial-footer-total'>Total ponderado: {{ ns.total }}%                   </text>        
             <br>
 
             {% set ns = namespace(total=0) %}
@@ -217,7 +218,8 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                     {% include 'temasitem.html' %}
                 {% endif %}
             {% endfor %}
-
+        </div>
+        <div>
             {% set ns = namespace(total=0) %}
 
             {% for i in pg %}
@@ -231,7 +233,7 @@ En el programa de Pensamiento Matemático I se abordan 15 progresiones de aprend
                 {% endif %}
             {% endfor %}
 
-            <text class='partial-footer-total'>Total Ponderado: {{ ns.total }}%</text>             <br>
+            <text class='partial-footer-total'>Total ponderado: {{ ns.total }}%</text>             <br>
 
             {% set ns = namespace(total=0) %}
 
