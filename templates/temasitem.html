@@ -11,7 +11,7 @@
         <div>
             {% set tiempo = 0 %}
             {% set tiempo = tiempo + i['aperturaTiempoTotal'] + i['desarrolloTiempoTotal'] + i['laboratorioTiempoTotal'] + i['cierreTiempoTotal'] %}
-            Duración: {{tiempo}} minutos
+            Duración: {{tiempo/60}} hrs
         </div>
         <div> 
             {% set eva = 0 %}
