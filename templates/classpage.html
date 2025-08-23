@@ -209,10 +209,53 @@
         #more2 {display: none;background:none}
         #more3 {display: none;background:none}
 
+      /* Navbar Styling */
+      .navbar2 {
+        background-color: #333;
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        z-index: 1000;
+        position: sticky;
+      }
+
+      .nav-list2 {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-list2 li {
+        margin: 0 1px;
+      }
+
+      .nav-list2 a {
+        display: block;
+        padding: 2px 2px;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .nav-list2 a:hover {
+        background-color: #575757;
+      }
+
+
+
     </style>
 </head>
 
    <img class="mt-5" id="banner" src= "https://cdn.dribbble.com/users/13496/screenshots/1327531/analytics-app.gif">
+  <!-- Top Navigation Bar -->
+  <nav class="navbar2">
+    <ul class="nav-list2">
+      <li><a href="https://math1-2025-web.onrender.com">Inicio</a></li>
+      <li><a href="#Aper">Apertura</a></li>
+      <li><a href="#Desa">Desarrollo</a></li>
+      <li><a href="#Cierr">Cierre</a></li>
+    </ul>
+  </nav>
   
 <body>
     <script>
@@ -279,7 +322,14 @@
             moreText3.style.display = "inline";
           }
         }
+
+
+
     </script>
+
+
+
+  
     <main class="container">
         
         <nav class="navbar fixed-top bg-white shadow-sm mb-4">
@@ -307,11 +357,7 @@
 
     <br>
         </div>
-        <a href="#Aper" style="margin-bottom:1px;background-color:green;">Ir a Apertura</a><br>
-        <a href="#Desa" style="margin-bottom:1px;background-color:#FCF23C;color:#746F11;">Ir a Desarrollo</a><br>
-        <a href="#Cierr" style="margin-bottom:1px;background-color:#FA09B1;">Ir a Cierre</a>
-        <br>
-        <br>
+
 
         
                 <div>
