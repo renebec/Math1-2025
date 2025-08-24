@@ -11,6 +11,9 @@ engine = create_engine(db_connection_string,
                   }
             )
 
+with engine.begin() as conn:
+  conn.execute(...)
+
 def load_pg_from_db():
   with engine.connect() as conn:
     result = conn.execute(text("SELECT * FROM math1_2025"))
