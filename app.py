@@ -5,6 +5,7 @@ from gevent.pywsgi import WSGIServer
 from database import load_pg_from_db, load_pgn_from_db
 from werkzeug.utils import secure_filename
 
+
 import cloudinary
 import cloudinary.uploader
 
@@ -13,6 +14,8 @@ from database import load_pgn_from_db, insert_actividad
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.secret_key = os.environ.get("SECRET_KEY", "dev-secret")
+
+
 
 
 @app.route("/")
