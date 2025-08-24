@@ -80,7 +80,10 @@ def show_pgn(id):
         return jsonify({'error': 'Not found'}), 404
 
 
-
+@app.route("/test-insert")
+def test_insert():
+    insert_solicitud(1, "actividad 1", "García", "López", "Juan Carlos", "TA", "5", "A", "https://example.com/test.pdf")
+    return "Insert test completed"
 
 
 
