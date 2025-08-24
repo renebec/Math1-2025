@@ -4,14 +4,14 @@
         <h4 style="margin-bottom:4px;">                                 
             {{i['pg']}} 
         </h4>
+        
+        <h4 style="margin-bottom:4px;color:rgb(160,160,160);text-align:left">                                 
+            {{i['tema']}} 
+        </h4>
         <!-- Botón que redirige al formulario exclusivo -->
         <a href="{{ url_for('enviaractividad') }}">
               <button>Enviar una actividad</button>
         </a>
-        <h4 style="margin-bottom:4px;color:rgb(160,160,160);text-align:left">                                 
-            {{i['tema']}} 
-        </h4>
-
         <div>
             Período: {{i['lapso']}} <br>
             {% set tiempo = 0 %}
