@@ -107,8 +107,8 @@ def show_actividad(id):
 
         except Exception as e:
             print("❌ Error during submission:", e)
-            flash("Ocurrió un error al procesar la actividad.", "danger")
-            return redirect(request.url)
+            flash(f"Ocurrió un error al procesar la actividad {actividad_num}.", "danger")
+            return redirect("/")
 
     return render_template("classpage.html", i=actividad, show_form=show_form)
 
