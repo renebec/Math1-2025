@@ -42,7 +42,7 @@ def load_pgn_from_db(id):
 
 
 
-def insert_actividad(actividad_num, apellido_paterno, apellido_materno, nombres, carrera, semestre, grpo, pdf_url):
+def insert_actividad(actividad_num, apellido_paterno, apellido_materno, nombres, carrera, semestre, grupo, pdf_url):
     with engine.begin() as conn:
       query = text("""
           INSERT INTO actividades (actividad_num, apellido_paterno, apellido_materno, nombres, carrera, semestre, grupo, pdf_url)

@@ -97,7 +97,11 @@ def show_actividad(id):
 
     return render_template("classpage.html", actividad=actividad)
 
-
+try:
+    insert_actividad(id, actividad_num, apellido_paterno, apellido_materno, nombres, carrera, semestre, grupo, pdf_url)  # with your values
+    print("Actividad inserted successfully.")
+except Exception as e:
+    print("ERROR inserting actividad:", e)
 
 
 if __name__ == '__main__':
