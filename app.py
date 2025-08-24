@@ -99,14 +99,15 @@ def show_actividad(id):
             )
             print("✅ Insert into DB successful")
             flash("Actividad enviada correctamente.", "success")
-            return redirect(url_for("show_actividad", id=id))
+            return redirect(f"/pg/{actividad_num}")
+            #return redirect(url_for("show_actividad", id=id))
 
         except Exception as e:
             print("❌ Error during submission:", e)
             flash("Ocurrió un error al procesar la actividad.", "danger")
             return redirect(request.url)
 
-    return render_template("classpage.html", actividad=actividad, show_form=show_form)
+    return render_template("classpage.html", i=actividad, show_form=show_form)
 
 
 
