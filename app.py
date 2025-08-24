@@ -55,62 +55,55 @@ def test_insert():
 
 
 
-@app.route("/actividad/<int:id>", methods=["GET", "POST"])
-def show_actividad(id):
-    actividad = load_pgn_from_db(id)
+@app.route("/enviaractividad", methods=["GET", "POST"])
+def enviaractividad():
+        show_form = True
+        if request.method == "POST":
+            try:
+                # Obtener los datos del formulario
+                actividad_num = request.form['actividad_num']
+                apellido_paterno = request.form['apellido_paterno']
+                apellido_materno = request.form['apellido_materno']
+                nombres = request.form['nombres']
+                semestre = request.form['semestre']
+                grupo = request.form['grupo']
+                pdf_file = request.files['pdf_file']
 
-    if not actividad:
-        return render_template("error.html", message="actividad no encontrada."), 404
+                # Validar que el archivo sea un PDF
+                if not pdf_file or not pdf_file.filename.endswith('.pdf'):
+                    flash("Debes subir un archivo PDF válido.", "danger")
+                    return redirect(request.url)
 
-    show_form = True  # decide if you want to show the form here
-    i = actividad
+                # Subir el archivo PDF a Cloudinary
+                result = cloudinary.uploader.upload(
+                    pdf_file,
+                    resource_type='raw',
+                    folder='actividades_pdf'
+                )
+                pdf_url = result['secure_url']
+                print("✅ Carga en Cloudinary exitosa")
 
-    if request.method == "POST":
-        try:
-            # Obtener datos del formulario
-            actividad_num = request.form['actividad_num']
-            apellido_paterno = request.form['apellido_paterno']
-            apellido_materno = request.form['apellido_materno']
-            nombres = request.form['nombres']
-            semestre = request.form['semestre']
-            grupo = request.form['grupo']
-            pdf_file = request.files['pdf_file']
+                # Insertar los datos en la base de datos
+                insert_actividad(
+                    actividad_num,
+                    apellido_paterno,
+                    apellido_materno,
+                    nombres,
+                    semestre,
+                    grupo,
+                    pdf_url
+                )
+                print("✅ Inserción en DB exitosa")
 
-            # Validar PDF
-            if not pdf_file or not pdf_file.filename.endswith('.pdf'):
-                flash("Debes subir un archivo PDF válido.", "danger")
-                return redirect(request.url)
+                flash(f"Actividad {actividad_num} enviada correctamente.", "success")
+                return redirect(url_for("hello_pm1"))  # Regresar a la página de inicio
 
-            # Subir a Cloudinary
-            result = cloudinary.uploader.upload(
-                pdf_file,
-                resource_type='raw',
-                folder='actividades_pdf'
-            )
-            pdf_url = result['secure_url']
-            print("✅ Upload to Cloudinary successful")
+            except Exception as e:
+                print("❌ Error during submission:", e)
+                flash(f"Ocurrió un error al procesar la actividad {actividad_num}.", "danger")
+                return redirect("/")
 
-            # Guardar en base de datos
-            insert_actividad(
-                actividad_num,
-                apellido_paterno,
-                apellido_materno,
-                nombres,
-                semestre,
-                grupo,
-                pdf_url
-            )
-            print("✅ Insert into DB successful")
-            flash(f"Actividad {actividad_num} enviada correctamente.", "success")
-            return redirect("/")
-            #return redirect(url_for("show_actividad", id=id))
-
-        except Exception as e:
-            print("❌ Error during submission:", e)
-            flash(f"Ocurrió un error al procesar la actividad {actividad_num}.", "danger")
-            return redirect("/")
-
-    return render_template("classpage.html", i=actividad, show_form=show_form)
+        return render_template("enviaractividad.html", show_form=show_form)
 
 
 

@@ -385,16 +385,14 @@
         <div class="desarrollo">
     <h2 style="color:orange;"">Desarrollo ({{i['desarrolloTiempoTotal']/60}} hrs)</h2>
             
-    {{i['desarrollo'] | safe}}<br>
-          {% include 'enviaractividad.html' %}
+    {{i['desarrollo'] | safe}}
           <br><br>
 
                 {% if i['laboratorioTiempoTotal'] > 0 %}
             
                 <div class="laboratorio">
                     <h2 style="color:#A11876;"">Laboratorio ({{i['laboratorioTiempoTotal']/60}} hrs)</h2>
-                        {{i['laboratorio'] | safe}}<br>
-                        {% include 'enviaractividad.html' %}
+                        {{i['laboratorio'] | safe}}
                 {% endif %}
                 </div>
           <br><br>
@@ -404,8 +402,6 @@
             <h2 style="color:#B51767;"">Cierre ({{i['cierreTiempoTotal']/60}} hrs)</h2>
 
             {{i['cierre'] | safe}}<br>
-
-            {% include 'enviaractividad.html' %}
 
                     </div>
         <br>
