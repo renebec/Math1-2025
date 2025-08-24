@@ -100,7 +100,7 @@ def show_actividad(id):
             print("✅ Insert into DB successful")
             flash(f"Actividad {actividad_num} enviada correctamente.", "success")
             return redirect("/")
-            #return redirect(url_for("show_actividad", id=id))
+          
 
         except Exception as e:
             print("❌ Error during submission:", e)
