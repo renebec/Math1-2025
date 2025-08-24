@@ -69,6 +69,19 @@
             </div>
         </nav>
         <img class="mt-5" id="banner" src= "https://www.adgility.com.au/hs-fs/hubfs/advanced-insights-analystics-reporting-GIF.gif?width=1780&height=1080&name=advanced-insights-analystics-reporting-GIF.gif"> 
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="container mt-3">
+            {% for category, message in messages %}
+              <div class="alert alert-{{ 'danger' if category == 'danger' else 'success' }}" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+    
     <div style="text-align:left;">
         <text style="font-size:11px;color:#04AA6D;" id="date-time"></text>&nbsp;
         <text style="font-size:11px;color:#04AA6D;">, </text>

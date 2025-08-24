@@ -99,7 +99,7 @@ def show_actividad(id):
             )
             print("✅ Insert into DB successful")
             flash("Actividad enviada correctamente.", "success")
-            return redirect(f"/pg/{actividad_num}")
+            return redirect("/")
             #return redirect(url_for("show_actividad", id=id))
 
         except Exception as e:
