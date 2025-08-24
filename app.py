@@ -45,7 +45,7 @@ def show_actividad(id):
         flash("Actividad enviada correctamente.", "success")
         return redirect(url_for("show_actividad", id=id))
 
-    return render_template("enviaractividad.html", actividad=actividad)
+    return render_template("classpage.html", actividad=actividad)
 
 
 
