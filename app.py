@@ -43,7 +43,7 @@ def show_pgn(id):
 """
 @app.route("/test-insert")
 def test_insert():
-    insert_actividad(1, "actividad 1", "García", "López", "Juan Carlos", "TA", "5", "A", "https://example.com/test.pdf")
+    insert_actividad(1, "actividad 1", "García", "López", "Juan Carlos", "5", "A", "https://example.com/test.pdf")
     return "Insert test completed"
 
 """
@@ -67,7 +67,6 @@ def show_actividad(id):
             apellido_paterno = request.form['apellido_paterno']
             apellido_materno = request.form['apellido_materno']
             nombres = request.form['nombres']
-            carrera = request.form['carrera']
             semestre = request.form['semestre']
             grupo = request.form['grupo']
             pdf_file = request.files['pdf_file']
@@ -92,7 +91,6 @@ def show_actividad(id):
                 apellido_paterno,
                 apellido_materno,
                 nombres,
-                carrera,
                 semestre,
                 grupo,
                 pdf_url
