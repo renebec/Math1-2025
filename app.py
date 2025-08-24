@@ -40,13 +40,13 @@ def show_pgn(id):
     else:
         return jsonify({'error': 'Not found'}), 404
 
-
+"""
 @app.route("/test-insert")
 def test_insert():
     insert_actividad(1, "actividad 1", "García", "López", "Juan Carlos", "TA", "5", "A", "https://example.com/test.pdf")
     return "Insert test completed"
 
-
+"""
 
 
 
@@ -59,49 +59,54 @@ def show_actividad(id):
         return render_template("error.html", message="actividad no encontrada."), 404
 
     if request.method == "POST":
-        # Obtener datos del formulario
-        actividad_num = request.form['actividad_num']
-        apellido_paterno = request.form['apellido_paterno']
-        apellido_materno = request.form['apellido_materno']
-        nombres = request.form['nombres']
-        carrera = request.form['carrera']
-        semestre = request.form['semestre']
-        grupo = request.form['grupo']
-        pdf_file = request.files['pdf_file']
+        try:
+            # Obtener datos del formulario
+            actividad_num = request.form['actividad_num']
+            apellido_paterno = request.form['apellido_paterno']
+            apellido_materno = request.form['apellido_materno']
+            nombres = request.form['nombres']
+            carrera = request.form['carrera']
+            semestre = request.form['semestre']
+            grupo = request.form['grupo']
+            pdf_file = request.files['pdf_file']
 
-        # Validar PDF
-        if not pdf_file or not pdf_file.filename.endswith('.pdf'):
-            flash("Debes subir un archivo PDF válido.", "danger")
+            # Validar PDF
+            if not pdf_file or not pdf_file.filename.endswith('.pdf'):
+                flash("Debes subir un archivo PDF válido.", "danger")
+                return redirect(request.url)
+
+            # Subir a Cloudinary
+            result = cloudinary.uploader.upload(
+                pdf_file,
+                resource_type='raw',
+                folder='actividades_pdf'
+            )
+            pdf_url = result['secure_url']
+            print("✅ Upload to Cloudinary successful")
+
+            # Guardar en base de datos
+            insert_actividad(
+                actividad_num,
+                apellido_paterno,
+                apellido_materno,
+                nombres,
+                carrera,
+                semestre,
+                grupo,
+                pdf_url
+            )
+            print("✅ Insert into DB successful")
+            flash("Actividad enviada correctamente.", "success")
+            return redirect(url_for("show_actividad", id=id))
+
+        except Exception as e:
+            print("❌ Error during submission:", e)
+            flash("Ocurrió un error al procesar la actividad.", "danger")
             return redirect(request.url)
-
-        # Subir a Cloudinary
-        result = cloudinary.uploader.upload(
-            pdf_file,
-            resource_type='raw',
-            folder='actividades_pdf'
-        )
-
-        pdf_url = result['secure_url']
-
-        print("Upload to Cloudinary successful!")
-        print("PDF URL:", pdf_url)
-
-        insert_actividad(id, actividad_num, apellido_paterno, apellido_materno, nombres, carrera, semestre, grupo, pdf_url)  # your values
-
-        print("Insert function called successfully.")
-
-        # Guardar en base de datos
-        insert_actividad(id, actividad_num, apellido_paterno, apellido_materno, nombres, carrera, semestre, grupo, pdf_url)
-        flash("Actividad enviada correctamente.", "success")
-        return redirect(url_for("show_actividad", id=id))
 
     return render_template("classpage.html", actividad=actividad)
 
-try:
-    insert_actividad(id, actividad_num, apellido_paterno, apellido_materno, nombres, carrera, semestre, grupo, pdf_url)  # with your values
-    print("Actividad inserted successfully.")
-except Exception as e:
-    print("ERROR inserting actividad:", e)
+
 
 
 if __name__ == '__main__':
