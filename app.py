@@ -40,12 +40,12 @@ def show_pgn(id):
     else:
         return jsonify({'error': 'Not found'}), 404
 
-"""
+
 @app.route("/test-insert")
 def test_insert():
-    insert_solicitud(1, "actividad 1", "García", "López", "Juan Carlos", "TA", "5", "A", "https://example.com/test.pdf")
+    insert_actividad(1, "actividad 1", "García", "López", "Juan Carlos", "TA", "5", "A", "https://example.com/test.pdf")
     return "Insert test completed"
-"""
+
 
 
 
@@ -82,6 +82,13 @@ def show_actividad(id):
         )
 
         pdf_url = result['secure_url']
+
+        print("Upload to Cloudinary successful!")
+        print("PDF URL:", pdf_url)
+
+        insert_actividad(id, actividad_num, apellido_paterno, apellido_materno, nombres, carrera, semestre, grupo, pdf_url)  # your values
+
+        print("Insert function called successfully.")
 
         # Guardar en base de datos
         insert_actividad(id, actividad_num, apellido_paterno, apellido_materno, nombres, carrera, semestre, grupo, pdf_url)
