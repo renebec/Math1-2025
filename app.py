@@ -58,6 +58,8 @@ def show_actividad(id):
     if not actividad:
         return render_template("error.html", message="actividad no encontrada."), 404
 
+    show_form = True  # decide if you want to show the form here
+
     if request.method == "POST":
         try:
             # Obtener datos del formulario
@@ -104,7 +106,7 @@ def show_actividad(id):
             flash("Ocurrió un error al procesar la actividad.", "danger")
             return redirect(request.url)
 
-    return render_template("classpage.html", actividad=actividad)
+    return render_template("classpage.html", actividad=actividad, show_form=show_form)
 
 
 
