@@ -60,6 +60,7 @@ def show_actividad(id):
         return render_template("error.html", message="actividad no encontrada."), 404
 
     show_form = True  # decide if you want to show the form here
+    i = actividad
 
     if request.method == "POST":
         try:
