@@ -98,7 +98,7 @@ def show_actividad(id):
                 pdf_url
             )
             print("✅ Insert into DB successful")
-            flash("Actividad enviada correctamente.", "success")
+            flash(f"Actividad {actividad_num} enviada correctamente.", "success")
             return redirect("/")
             #return redirect(url_for("show_actividad", id=id))
 
