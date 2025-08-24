@@ -10,7 +10,8 @@ import cloudinary.uploader
 
 from database import load_pgn_from_db, insert_actividad
 
-
+app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 @app.route("/actividad/<int:id>", methods=["GET", "POST"])
 def show_actividad(id):
@@ -49,8 +50,7 @@ def show_actividad(id):
 
 
 
-app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+
 
 
 @app.route("/")
