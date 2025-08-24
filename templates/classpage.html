@@ -426,36 +426,7 @@
                 <div class="laboratorio">
                     <h2 style="color:#A11876;"">Laboratorio ({{i['laboratorioTiempoTotal']/60}} hrs)</h2>
                         {{i['laboratorio'] | safe}}<br>
-                  {% if show_form %}
-                    <form method="POST" enctype="multipart/form-data" action="{{ url_for('show_actividad', id=i['id']) }}">
-
-                        <label>Título de actividad:</label> <br>
-                        <input type="text" name="actividad_num" placeholder="Actividad_1" required> <br>
-
-                        <label>Apellido Paterno:</label> <br>
-                        <input type="text" name="apellido_paterno" placeholder="García" required> <br> 
-
-                        <label>Apellido Materno:</label> <br>
-                        <input type="text" name="apellido_materno" placeholder="López"> <br> 
-
-                        <label>Nombre(s):</label> <br>
-                        <input type="text" name="nombres" placeholder="José_Carlos" required> <br>
-
-                        <label>Carrera:</label> <br>
-                        <input type="text" name="carrera" placeholder="5" required> <br>
-
-                        <label>Semestre:</label> <br>
-                        <input type="text" name="semestre" placeholder="3" required> <br>
-
-                        <label>Grupo:</label> <br>
-                        <input type="text" name="grupo" placeholder="A" required> <br>
-
-                        <label>Archivo PDF:</label> 
-                        <input type="file" name="pdf_file" accept="application/pdf" required><br><br> 
-                        <button type="submit">Enviar solicitud</button> 
-
-                    </form>
-                  {% endif %}
+                        {% include 'enviaractividad.html' %}
                 {% endif %}
                 </div>
         </div>
@@ -465,36 +436,7 @@
 
             {{i['cierre'] | safe}}<br>
 
-          {% if show_form %}
-            <form method="POST" enctype="multipart/form-data" action="{{ url_for('show_actividad', id=i['id']) }}">
-
-                <label>Título de actividad:</label> <br>
-                <input type="text" name="actividad_num" placeholder="Actividad_1" required> <br>
-
-                <label>Apellido Paterno:</label> <br>
-                <input type="text" name="apellido_paterno" placeholder="García" required> <br> 
-
-                <label>Apellido Materno:</label> <br>
-                <input type="text" name="apellido_materno" placeholder="López"> <br> 
-
-                <label>Nombre(s):</label> <br>
-                <input type="text" name="nombres" placeholder="José_Carlos" required> <br>
-
-                <label>Carrera:</label> <br>
-                <input type="text" name="carrera" placeholder="5" required> <br>
-
-                <label>Semestre:</label> <br>
-                <input type="text" name="semestre" placeholder="3" required> <br>
-
-                <label>Grupo:</label> <br>
-                <input type="text" name="grupo" placeholder="A" required> <br>
-
-                <label>Archivo PDF:</label> 
-                <input type="file" name="pdf_file" accept="application/pdf" required><br><br> 
-                <button type="submit">Enviar solicitud</button> 
-
-            </form>
-          {% endif %}
+            {% include 'enviaractividad.html' %}
 
                     </div>
         <br>
